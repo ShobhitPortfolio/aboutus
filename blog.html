@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web3 Luxury Cards</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500&display=swap" rel="stylesheet">
+
+<style>
+body { font-family: 'General Sans', sans-serif; cursor: none; }
+* { cursor: none !important; }
+
+/* Cursor */
+.cursor-ring {
+  position: fixed;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.7);
+  pointer-events: none;
+  z-index: 9999;
+  background: transparent;
+  transform: translate(-50%, -50%);
+}
+
+.card {
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transform-origin: center;
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: 0 40px 100px rgba(255,255,255,0.12);
+}
+
+/* Animated thin border glow */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 0.5px;
+  background: linear-gradient(120deg, #a855f7, #ffffff, #a855f7);
+  background-size: 200% 200%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.card:hover::before {
+  opacity: 1;
+  animation: borderFlow 2.5s linear infinite;
+}
+
+@keyframes borderFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Mouse follow glow */
+.cursor-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.15), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.card:hover .cursor-glow {
+  opacity: 1;
+}
+
+.glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 30%;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
+  filter: blur(25px);
+  border-radius: 9999px;
+}
+
+.lux-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(120deg, rgba(255,255,255,0.3), transparent, rgba(255,255,255,0.2));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+</style>
+</head>
+
+<body class="bg-black text-white">
+
+<!-- Cursor -->
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- HEADER -->
+<header class="w-full flex justify-start items-center px-6 md:px-16 py-6 border-b border-white/10 backdrop-blur-md sticky top-0 z-20">
+  <a href="contact.html" class="text-sm font-medium bg-[linear-gradient(144.5deg,white_28%,rgba(0,0,0,0)_115%)] bg-clip-text text-transparent hover:opacity-80 transition">Contact</a>
+</header>
+
+<div class="min-h-screen flex flex-col items-center px-6 py-20 gap-20">
+
+  <h1 class="text-4xl md:text-5xl font-medium text-center bg-[linear-gradient(144.5deg,white_28%,rgba(0,0,0,0)_115%)] bg-clip-text text-transparent">
+    Founders & Builders
+  </h1>
+
+  <div class="flex flex-col gap-12 max-w-3xl w-full">
+
+    <div class="card relative rounded-2xl p-8 bg-white/5 backdrop-blur-xl">
+      <div class="lux-border"></div>
+      <div class="cursor-glow"></div>
+      <div class="glow"></div>
+      <h2 class="text-2xl font-medium mb-3">Shobhit</h2>
+      <p class="text-white/70 text-sm leading-relaxed">
+        A 14-year-old boy focused on business, motivated by his parents’ struggles and determined to give them a better life. He is skilled in AI prompting, startup ideas, and basic coding with AI. He is kind-hearted and aims to build luxury products that people genuinely love.
+      </p>
+    </div>
+
+    <div class="card relative rounded-2xl p-8 bg-white/5 backdrop-blur-xl">
+      <div class="lux-border"></div>
+      <div class="cursor-glow"></div>
+      <div class="glow"></div>
+      <h2 class="text-2xl font-medium mb-3">Albie</h2>
+      <p class="text-white/70 text-sm leading-relaxed">
+        A 14-year-old boy from South India working alongside Shobhit with the same goal of making their parents proud. He is good in sports, management, and giving practical suggestions. He is highly trusted and dependable.
+      </p>
+    </div>
+
+    <div class="card relative rounded-2xl p-8 bg-white/5 backdrop-blur-xl">
+      <div class="lux-border"></div>
+      <div class="cursor-glow"></div>
+      <div class="glow"></div>
+      <h2 class="text-2xl font-medium mb-3">Ayush</h2>
+      <p class="text-white/70 text-sm leading-relaxed">
+        A 15-year-old boy currently under pressure to prove himself. He is strong in aesthetics, persuasion, and mature thinking. Trusted by the team, he manages global orders and financial operations.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="card relative max-w-3xl w-full rounded-2xl p-10 bg-white/5 backdrop-blur-xl">
+    <div class="lux-border"></div>
+    <div class="cursor-glow"></div>
+    <div class="glow"></div>
+
+    <h2 class="text-2xl font-medium mb-6">Recent Ideas</h2>
+
+    <p class="text-white/70 text-sm leading-relaxed mb-4">
+      We aim to build a luxury lifestyle brand where products are manufactured through trusted partners and designed using AI and team-driven prompts. The focus is on premium quality, multiple quality checks, and strong branding to deliver a true luxury experience.
+    </p>
+
+    <p class="text-white/70 text-sm leading-relaxed">
+      Another idea is launching a café brand starting from Faridabad and expanding globally. The focus is on hygiene, luxury, and affordability. We will ensure real ingredients, avoid fake substitutes like artificial paneer, and maintain strict hygiene practices like gloves and safe preparation.
+    </p>
+  </div>
+
+</div>
+
+<script>
+
+// Tilt + glow
+
+document.querySelectorAll('.card').forEach(card => {
+  const glow = card.querySelector('.cursor-glow');
+
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+
+    const x = (e.clientX - rect.left);
+    const y = (e.clientY - rect.top);
+
+    const percentX = x / rect.width;
+    const percentY = y / rect.height;
+
+    const rotateX = (percentY - 0.5) * 8;
+    const rotateY = (percentX - 0.5) * 8;
+
+    const dist = Math.sqrt(Math.pow(percentX - 0.5, 2) + Math.pow(percentY - 0.5, 2));
+    const scale = 1 - dist * 0.05;
+
+    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
+
+    glow.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.18), transparent 40%)`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)';
+    glow.style.background = 'radial-gradient(circle at center, rgba(255,255,255,0.15), transparent 40%)';
+  });
+});
+
+// Cursor
+const ring = document.getElementById('cursorRing');
+
+window.addEventListener('mousemove', e => {
+  ring.style.left = e.clientX + 'px';
+  ring.style.top = e.clientY + 'px';
+});
+
+</script>
+
+</body>
+</html>
